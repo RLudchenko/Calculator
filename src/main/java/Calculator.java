@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class Calculator {
     public static void main(String[] args) {
         boolean runAgain = false;
-        Double result = .0;
         List<Double> inputs = new ArrayList<Double>();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the first number : ");
@@ -15,6 +14,7 @@ public class Calculator {
         inputs.add(scanner.nextDouble());
         System.out.print("Enter the operator : ");
         String op = scanner.next();
+        Double result = .0;
 
         result = calculateAnswer(inputs, op);
         System.out.println("Answer : " + result);
@@ -33,29 +33,32 @@ public class Calculator {
     }
 
     enum Operations {
-        ADD(){
+        ADD() {
             @Override
             String getSymbol() {
                 return "+";
             }
+
             @Override
             Double getResult(Double d1, Double d2) {
                 return d1 + d2;
             }
-        },SUB{
+        },SUB {
             @Override
             String getSymbol() {
                 return "-";
             }
+
             @Override
             Double getResult(Double d1, Double d2) {
                 return d1 - d2;
             }
-        },MUL{
+        },MUL {
             @Override
             String getSymbol() {
                 return "*";
             }
+
             @Override
             Double getResult(Double d1, Double d2) {
                 return d1 * d2;
