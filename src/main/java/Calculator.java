@@ -1,14 +1,13 @@
 import java.util.Arrays;
-import java.util.List;
 
 public class Calculator {
-    static Double calculateAnswer(List<Double> inputs, String operator) {
-        Operations[] ops = Operations.values();
-        Operations correctOp = Arrays.asList(ops).stream()
+    static Double calculateAnswer(Double x, Double y, String operator) {
+        return Arrays.stream(Operations.values())
                 .filter(op -> op.getSymbol().equals(operator))
-                .findFirst().get();
-
-        return correctOp.getResult(inputs.get(0), inputs.get(1));
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(String
+                        .format("Operation '%s' is not supported", operator)))
+                .getResult(x, y);
     }
 
     enum Operations {
